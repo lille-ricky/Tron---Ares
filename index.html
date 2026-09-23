@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tron</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    
+
+
+</head>
+
+<body>
+
+
+    <!-- Background music -->
+    <audio id="bg-music" src="assets/audio/background.mp3" loop preload="auto"></audio>
+
+    <div class="main-container">
+        <header class="titre-jeu">
+            <h1>TRON</h1>
+        </header>
+        <div class="canvas-warning">
+             Veuillez utiliser un écran plus large pour une meilleure expérience utilisateur.
+        </div>
+
+
+        <div class="scoreboard">
+            <div class="player">
+                <h2></h2>
+                <div class="player-circle-outer red">
+                    <div class="player-circle-middle red">
+                        <div class="player-circle-inner red">
+                            <p class="score" id="score1"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-separator">
+                <div class="line vertical"></div>
+                <div class="line horizontal"></div>
+            </div>
+
+            <div class="player">
+                <h2></h2>
+                <div class="player-circle-outer blue">
+                    <div class="player-circle-middle blue">
+                        <div class="player-circle-inner blue">
+                            <p class="score" id="score2"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Canvas pour la grille -->
+        <div class="canvas-container">
+
+        </div>
+
+        <!-- Boutons -->
+        <div class="buttons-container">
+            <button class="btn-new-game">Nouvelle Partie</button>
+            <button class="btn-config">Configuration des contrôles</button>
+        </div>
+
+        <!-- Commandes de pilotage -->
+        <div id="dialog-config" title="Configuration des contrôles" style="display:none;">
+            <div class="controls-panel">
+                <h1>COMMANDE DE PILOTAGE</h1>
+                <div class="controls-players">
+                    <!-- Joueur 1 -->
+                    <div class="controls-player player-cyan">
+                        <h3>Cycle Cyan</h3>
+                        <div class="cmd">
+                            <p>Gauche</p>
+                            <div class="key-cyan"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Droite</p>
+                            <div class="key-cyan"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Haut</p>
+                            <div class="key-cyan"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Bas</p>
+                            <div class="key-cyan"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Saut</p>
+                            <div class="key-cyan"></div>
+                        </div>
+                    </div>
+
+                    <!-- Joueur 2 -->
+                    <div class="controls-player player-red">
+                        <h3>Cycle Red</h3>
+                        <div class="cmd">
+                            <p>Gauche</p>
+                            <div class="key-red"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Droite</p>
+                            <div class="key-red"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Haut</p>
+                            <div class="key-red"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Bas</p>
+                            <div class="key-red"></div>
+                        </div>
+                        <div class="cmd">
+                            <p>Saut</p>
+                            <div class="key-red"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button id="btn-save-controls">Sauvegarder</button>
+                    <button id="btn-cancel-controls">Annuler</button>
+                    <button id="btn-reset-controls">Réinitialiser</button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <h1>COMMANDE DE PILOTAGE</h1>
+
+            <div class="controls-players">
+                <!-- Joueur 1 -->
+                <div class="controls-player player-cyan">
+                    <h3>Cycle Cyan</h3>
+                    <div class="cmd">
+                        <p>Gauche</p>
+                        <div class="key-cyan"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Droite</p>
+                        <div class="key-cyan"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Haut</p>
+                        <div class="key-cyan"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Bas</p>
+                        <div class="key-cyan"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Saut</p>
+                        <div class="key-cyan"></div>
+                    </div>
+                </div>
+
+                <!-- Joueur 2 -->
+                <div class="controls-player player-red">
+                    <h3>Cycle Red</h3>
+                    <div class="cmd">
+                        <p>Gauche</p>
+                        <div class="key-red"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Droite</p>
+                        <div class="key-red"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Haut</p>
+                        <div class="key-red"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Bas</p>
+                        <div class="key-red"></div>
+                    </div>
+                    <div class="cmd">
+                        <p>Saut</p>
+                        <div class="key-red"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<link rel="stylesheet" href="assets/vendor/jquery-ui.min.css">
+<script src="assets/vendor/jquery-3.7.1.min.js"></script>
+<script src="assets/vendor/jquery-ui.min.js"></script>
+
+<script src="js/model/Point.js"></script>
+<script src="js/model/Historique.js"></script>
+<script src="js/model/Grille.js"></script>
+<script src="js/model/Canevas.js"></script>
+<script src="js/model/TableauScores.js"></script>
+<script src="js/model/Controles.js"></script>
+<script src="js/model/Joueur.js"></script>
+<script src="js/model/Jeu.js"></script>
+
+<!-- Contrôleur -->
+<script src="js/controller/ControleurJeu.js"></script>
+
+<!-- Vues -->
+<script src="js/view/DialogConfig.js"></script>
+
+
+<!-- Point d'entrée -->
+<script src="js/main.js"></script>
+
+
+</body>
+
+
+</html>
